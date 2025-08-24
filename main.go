@@ -3,7 +3,8 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"main/internal/concurrency"
+	_ "main/internal/concurrency"
+	"main/internal/interfaces"
 	_ "main/internal/pointers"
 	"os"
 	"sort"
@@ -162,5 +163,6 @@ func main() {
 	// pointers.PrintEmail()
 	// concurrency.ConcurrentPrint()
 	// concurrency.PrintSumUsingChannels()
-	concurrency.UpdateMapUsingMutex()
+	// concurrency.UpdateMapUsingMutex()
+	interfaces.ExampleMain()
 }
