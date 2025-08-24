@@ -3,6 +3,8 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"main/internal/concurrency"
+	_ "main/internal/pointers"
 	"os"
 	"sort"
 	"strings"
@@ -144,9 +146,9 @@ func fib() func() int {
 	}
 }
 
-func callingAClosure(){
-	f,g :=fib(),fib()
-	fmt.Println(f(),g())
+func callingAClosure() {
+	f, g := fib(), fib()
+	fmt.Println(f(), g())
 }
 
 func main() {
@@ -156,5 +158,9 @@ func main() {
 	// countUniqueWords()
 	// formatStringForInteger()
 	// formattingMapsAndStrings()
-	callingAClosure()
+	// callingAClosure()
+	// pointers.PrintEmail()
+	// concurrency.ConcurrentPrint()
+	// concurrency.PrintSumUsingChannels()
+	concurrency.UpdateMapUsingMutex()
 }
