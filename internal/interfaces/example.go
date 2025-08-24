@@ -6,7 +6,11 @@ import (
 	"time"
 )
 
-/** This is an example on how to use interfaces */
+/** This is an example on how to use interfaces
+Taken from : https://youtu.be/McRq-uBAa9I?si=anF45k47jLa1jCmG
+
+Used chatgpt to enhance the BetterAccountNotifier notifier
+*/
 
 // Interfaces
 type (
@@ -65,14 +69,14 @@ func (h *AccountHandler) handleCreateAccount(ctx context.Context, account Accoun
 }
 
 func ExampleMain() {
-	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	accountHandler := &AccountHandler{
 		// Here we can change the notifer behaviour by Changing it to BetterAccountNotifier
 		// AccountNotifier: &SimpleAccountNotifier{},
 		AccountNotifier: &BetterAccountNotifier{
 			// Play with context time and delivery time to see the magic
-			timeToDeliver: 10 * time.Second,
+			timeToDeliver: 5 * time.Second,
 		},
 	}
 	account := Account{

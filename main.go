@@ -3,8 +3,8 @@ package main
 import (
 	"bufio"
 	"fmt"
-	_ "main/internal/concurrency"
-	"main/internal/interfaces"
+	"main/internal/concurrency"
+	_ "main/internal/interfaces"
 	_ "main/internal/pointers"
 	"os"
 	"sort"
@@ -87,7 +87,10 @@ func countUniqueWords() {
 
 // A descriptor would be a data structure that holds information of some data and a reference (pointer) to it.
 
-// TODO: Try writing tests for all these functions
+/*
+TODO: Try writing tests for all these functions
+Learn what is the difference between RWMutex and Mutex
+*/
 func main() {
 	// getAverage()
 	// strings1()
@@ -99,6 +102,6 @@ func main() {
 	// pointers.PrintEmail()
 	// concurrency.ConcurrentPrint()
 	// concurrency.PrintSumUsingChannels()
-	// concurrency.UpdateMapUsingMutex()
-	interfaces.ExampleMain()
+	concurrency.WorkerPoolMain()
+	// interfaces.ExampleMain()
 }

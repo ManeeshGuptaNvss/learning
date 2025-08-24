@@ -5,11 +5,15 @@ import (
 	"sync"
 )
 
+/*
+Reference : https://youtu.be/5Z8skvm4g64?si=XAYq7x51f2C_DRr6
+*/
+
 const KEY string = "sample_key"
 
 type SafeCounter struct {
 	mu     sync.Mutex
-	NumMap map[string]int
+	NumMap map[string]int // maps are not thread-safe in go
 }
 
 func (s *SafeCounter) Add(num int) {

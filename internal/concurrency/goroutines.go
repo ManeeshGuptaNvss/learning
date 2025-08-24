@@ -7,6 +7,10 @@ import (
 	"time"
 )
 
+/*
+Reference : https://youtu.be/5Z8skvm4g64?si=XAYq7x51f2C_DRr6
+*/
+
 func ConcurrentPrint() {
 	var wg sync.WaitGroup
 	wg.Add(1)
