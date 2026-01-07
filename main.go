@@ -3,7 +3,9 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"main/internal/concurrency"
+	"io"
+	dsa "main/internal/DSA"
+	_ "main/internal/concurrency"
 	_ "main/internal/interfaces"
 	_ "main/internal/pointers"
 	"os"
@@ -11,6 +13,41 @@ import (
 	"strings"
 )
 
+func sampleChannel() {
+	ch := make(chan int)
+
+	go func() {
+		ch <- 5 // blocks until main receives
+	}()
+
+	fmt.Println(<-ch) // unblocks sender
+
+}
+
+func sampleChannel2() {
+	ch := make(chan int)
+	go func() {
+		for i := 1; i <= 5; i++ {
+			ch <- i
+		}
+		close(ch)
+	}()
+
+	for v := range ch {
+		fmt.Println(v)
+	}
+
+}
+
+func typeQuestion() {
+	var r io.Reader
+	fmt.Println(r == nil) // true
+
+	var f *os.File = nil
+	fmt.Printf("%T %T\n", r, f)
+	r = f
+	fmt.Println(r == nil) // false
+}
 func getAverage() {
 	var sum float64
 	var n int
@@ -102,6 +139,8 @@ func main() {
 	// pointers.PrintEmail()
 	// concurrency.ConcurrentPrint()
 	// concurrency.PrintSumUsingChannels()
-	concurrency.WorkerPoolMain()
+	// concurrency.WorkerPoolMain()
+	// concurrency.RunProducerConsumer()
+	dsa.RunMinimumTimeToShip()
 	// interfaces.ExampleMain()
 }
